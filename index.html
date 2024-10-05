@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teknologi Ada Di Sekitar Kita</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  
+  <!-- My CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navbar Start -->
+  <nav class="navbar d-flex justify-content-between align-items-center navbar-expand-md fixed-top" id="navbar">
+    <div class="container">
+      <a class="navbar-brand" href="#home">
+        <img src="img/dellas.png" alt="SMPN 18 Kota Tangerang Selatan">
+      </a>
+      <div class="offcanvas-md offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <a href="#">
+            <img src="img/dellas.png" alt="SMPN 18 Kota Tangerang Selatan" class="offcanvas-logo">
+          </a>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasNavbar" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-center flex-grow-1">
+            <li class="nav-item">
+              <a class="nav-link mx-lg-2" aria-current="page" href="#home">Beranda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-lg-2" href="#latest-tech">Teknologi Terbaru</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-lg-2" href="#trend">Tren</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-lg-2" href="#inventions">Penemuan</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="d-flex align-items-center dark-toggle-text">
+        <span class="me-1 fs-6">Terang</span>
+        <input type="checkbox" class="d-none" id="dark-toggle">
+        <label for="dark-toggle" class="px-1">
+          <div class="toggle-wrapper">
+            <div class="toggle-circle"></div>
+          </div>
+        </label>
+        <span class="ms-1 fs-6">Gelap</span>
+      </div>
+      <button class="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="hamburger rounded-lg"></span>
+        <span class="hamburger rounded-lg"></span>
+        <span class="hamburger rounded-lg"></span>
+      </button>
+    </div>
+  </nav>
+  <!-- Navbar End -->
+
+  <!-- Hero Section Start -->
+  <section id="home">
+  <div class="container-fluid px-0 top-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 col-md-6 rounded-4 texts">
+          <h1 class="mb-4">Teknologi ada di sekitar kita.</h1>
+          <p class="fs-5">Teknologi memengaruhi cara kita hidup, bekerja, dan berinteraksi. Dari ponsel hingga alat rumah tangga pintar, teknologi memudahkan aktivitas sehari-hari dan membuka akses tanpa batas ke informasi serta inovasi. </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Hero Section End -->
+
+  <!-- Section Latest Tech Start -->
+  <section id="latest-tech" class="overflow-hidden">
+    <div class="container py-5">
+      <div class="row text-center">
+        <div class="col">
+          <h2>Teknologi Terbaru</h2>
+          <p>Ada beberapa teknologi baru yang sedang ramai dibicarakan, seperti:</p>
+        </div>
+      </div>
+      <div class="row justify-content-center align-items-start mt-5">
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card rounded-4 latest-tech-card hidden">
+            <img src="img/bg-arduino.jpg" class="card-img-top" alt="Arduino">
+            <div class="card-body">
+              <h5 class="card-title">IoT</h5>
+              <p class="card-text">Internet of Things (IoT) adalah konsep yang memungkinkan perangkat fisik untuk terhubung ke internet dan bertukar data tanpa campur tangan manusia.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card rounded-4 latest-tech-card hidden">
+            <img src="img/5g.jpg" class="card-img-top" alt="5G">
+            <div class="card-body">
+              <h5 class="card-title">5G</h5>
+              <p class="card-text">5G adalah generasi kelima dari teknologi seluler nirkabel, yang menawarkan kecepatan unggah dan unduh yang lebih tinggi, koneksi yang lebih konsisten, dan peningkatan kapasitas dibandingkan jaringan sebelumnya.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card rounded-4 latest-tech-card hidden">
+            <img src="img/bg-vr.jpg" class="card-img-top" alt="Virtual Reality (VR)">
+            <div class="card-body">
+              <h5 class="card-title">Virtual Reality</h5>
+              <p class="card-text">Pengertian Virtual Reality (VR) adalah sebuah teknologi yang menciptakan pengalaman interaktif dan imersif bagi pengguna di dalam lingkungan simulasi. Dalam dunia virtual yang diciptakan, kamu dapat merasakan dan berinteraksi dengan objek-objek serta lingkungan 3D yang terlihat dan terdengar seperti di dunia nyata.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card rounded-4 latest-tech-card hidden">
+            <img src="img/chatgpt.jpg" class="card-img-top" alt="ChatGPT">
+            <div class="card-body">
+              <h5 class="card-title">ChatGPT</h5>
+              <p class="card-text">ChatGPT adalah model bahasa yang menggunakan kecerdasan buatan (AI) untuk menghasilkan teks yang mirip dengan respons manusia dalam percakapan. ChatGPT dikembangkan oleh OpenAI dan menggunakan teknologi Generative Pre-trained Transformer (GPT).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+  
+  </section>
+  <!-- Section Recent Tech End -->
+
+  <!-- Section Trend Start -->
+  <section id="trend" class="overflow-hidden px-4">
+    <div class="container">
+      <h2 class="fw-bold text-center">Tren</h2>
+      <p class="text-center">Ada beberapa teknologi yang menjadi tren dan ramai digunakan saat ini, seperti:</p>
+      <div class="ai-row d-flex align-items-center py-5">
+        <div class="col-lg-6 col-md-6">
+          <h2 class="mb-4 fw-semibol">Kecerdasan Buatan</h2>
+          <p class="fs-5">AI saat ini menjadi tren karena kemampuannya untuk meningkatkan efisiensi dan inovasi dalam berbagai bidang. Meskipun memberikan banyak manfaat, tantangan etika dan dampak sosialnya perlu diperhatikan agar penggunaannya tetap bertanggung jawab.</p>
+        </div>
+        <div class="col-lg-6 col-md-6 ai-image hidden">
+          <!-- AI illustration image here... -->
+        </div>
+      </div>
+      <div class="row d-flex align-items-center py-5">
+        <div class="col-lg-6 col-md-6 foldable-image hidden">
+          <!-- Foldable image here... -->
+        </div>
+        <div class="col-lg-6 col-md-6">
+          <h2 class="mb-4 fw-semibold">Ponsel Lipat</h2>
+          <p class="fs-5">Baru-baru ini, ponsel dalam bentuk yang dapat dilipat sedang menjadi tren, karena bentuk ponsel ini menghadirkan inovasi menarik dengan layar fleksibel yang bisa dilipat. Akan tetapi, harga ponsel lipat cenderung mahal dikarenakan biaya untuk produksi ponsel ini masih sangat mahal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Section Foldables End -->
+
+  <!-- Section Inventions Start -->
+  <section id="inventions">
+    <div>
+      <h2 class="text-center fw-bold">Penemuan</h2>
+      <p class="text-center">Ada beberapa penemuan revolusioner yang mengubah cara kita melakukan sesuatu, seperti:</p>
+    </div>
+
+    <div class="slider-container">
+      <div class="swiper overflow-visible">
+        <div class="swiper-wrapper content">
+          
+          <div class="swiper-slide myCard">
+            <div class="card-content">
+              <div class="image">
+                <img src="img/win95.jpg" alt="Microsoft Windows 95" />
+              </div>
+            </div>
+          </div>
+    
+          <div class="swiper-slide myCard">
+            <div class="card-content">
+              <div class="image">
+                <img src="img/ie.webp" alt="Microsoft Internet Explorer" />
+              </div>
+            </div>
+          </div>
+    
+          <div class="swiper-slide myCard">
+            <div class="card-content">
+              <div class="image">
+                <img src="img/ipod.jpg" alt="Apple iPod Touch 7th Generation" />
+              </div>
+            </div>
+          </div>
+    
+          <div class="swiper-slide myCard">
+            <div class="card-content">
+              <div class="image">
+                <img src="img/blackberry.jpg" alt="BlackBerry Phone" />
+              </div>
+            </div>
+          </div>
+    
+          <div class="swiper-slide myCard">
+            <div class="card-content">
+              <div class="image">
+                <img src="img/youtube.webp" alt="YouTube" />
+              </div>
+            </div>
+          </div>
+    
+          <div class="swiper-slide myCard">
+            <div class="card-content">
+              <div class="image">
+                <img src="img/iphone.webp" alt="Apple iPhone 2G" />
+              </div>
+            </div>
+          </div>
+          
+          <div class="swiper-slide myCard">
+            <div class="card-content">
+              <div class="image">
+                <img src="img/android.jpg" alt="Android" />
+              </div>
+            </div>
+          </div>
+          
+          <div class="swiper-slide myCard">
+            <div class="card-content">
+              <div class="image">
+                <img src="img/vr.jpg" alt="Virtual Reality" />
+              </div>
+            </div>
+          </div>
+          
+          <div class="swiper-slide myCard">
+            <div class="card-content">
+              <div class="image">
+                <img src="img/crypto.png" alt="Cryptocurrency" />
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide myCard">
+            <div class="card-content">
+              <div class="image">
+                <img src="img/chatgpt.jpg" alt="Kecerdasan Buatan" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="image-desc mt-5">
+      <h3 class="text-center"><strong id="image-title"></strong></h3>
+      <p id="image-desc" class="container text-center mt-3"></p>
+    </div>
+  </section>
+  <!-- Section Inventions End -->
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <!-- My JS -->
+  <script src="js/script.js"></script>
+</body>
+</html>
