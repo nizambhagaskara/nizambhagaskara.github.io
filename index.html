@@ -1,9 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="">
+<html lang="en" data-bs-theme=""> <!-- data-bs-theme left empty, dynamically controlled with JS -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Teknologi Ada Di Sekitar Kita</title>
+
+  <!-- Standard favicon -->
+  <link rel="icon" href="img/favicon-32x32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="img/favicon-16x16.png" sizes="16x16" type="image/png">
+
+  <!-- Apple Touch Icon for iOS -->
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+
+  <!-- Android Icon -->
+  <link rel="icon" sizes="192x192" href="img/android-chrome-192x192.png">
+
+  <!-- Favicon for older browsers -->
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -17,12 +30,12 @@
 <body>
 
   <!-- Navbar Start -->
-  <nav class="navbar d-flex justify-content-between align-items-center navbar-expand-md fixed-top" id="navbar">
+  <nav class="navbar d-flex justify-content-between align-items-center navbar-expand-lg fixed-top" id="navbar">
     <div class="container">
       <a class="navbar-brand" href="#home">
         <img src="img/dellas.png" alt="SMPN 18 Kota Tangerang Selatan">
       </a>
-      <div class="offcanvas-md offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-lg offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-header">
           <a href="#">
             <img src="img/dellas.png" alt="SMPN 18 Kota Tangerang Selatan" class="offcanvas-logo">
@@ -30,7 +43,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasNavbar" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-          <ul class="navbar-nav justify-content-center flex-grow-1">
+          <ul class="navbar-nav justify-content-center flex-grow-1 gap-3">
             <li class="nav-item">
               <a class="nav-link mx-lg-2" aria-current="page" href="#home">Beranda</a>
             </li>
@@ -65,19 +78,20 @@
   </nav>
   <!-- Navbar End -->
 
-  <!-- Hero Section Start -->
+  <!-- Home Section Start -->
   <section id="home">
-  <div class="container-fluid px-0 top-banner">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-5 col-md-6 rounded-4 texts">
-          <h1 class="mb-4">Teknologi ada di sekitar kita.</h1>
-          <p class="fs-5">Teknologi memengaruhi cara kita hidup, bekerja, dan berinteraksi. Dari ponsel hingga alat rumah tangga pintar, teknologi memudahkan aktivitas sehari-hari dan membuka akses tanpa batas ke informasi serta inovasi. </p>
+    <div class="container-fluid px-0 top-banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 rounded-4 texts">
+            <h1 class="mb-4">Teknologi ada di sekitar kita.</h1>
+            <p class="fs-5">Teknologi memengaruhi cara kita hidup, bekerja, dan berinteraksi. Dari ponsel hingga alat rumah tangga pintar, teknologi memudahkan aktivitas sehari-hari dan membuka akses tanpa batas ke informasi serta inovasi. </p>
+          </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- Hero Section End -->
+  <!-- Home Section End -->
 
   <!-- Section Latest Tech Start -->
   <section id="latest-tech" class="overflow-hidden">
@@ -91,7 +105,9 @@
       <div class="row justify-content-center align-items-start mt-5">
         <div class="col-md-6 col-lg-4 mb-4">
           <div class="card rounded-4 latest-tech-card hidden">
-            <img src="img/bg-arduino.jpg" class="card-img-top" alt="Arduino">
+            <a href="https://www.arduino.cc/">
+              <img src="img/bg-arduino.jpg" class="card-img-top" alt="Arduino">
+            </a>
             <div class="card-body">
               <h5 class="card-title">IoT</h5>
               <p class="card-text">Internet of Things (IoT) adalah konsep yang memungkinkan perangkat fisik untuk terhubung ke internet dan bertukar data tanpa campur tangan manusia.</p>
@@ -100,7 +116,9 @@
         </div>
         <div class="col-md-6 col-lg-4 mb-4">
           <div class="card rounded-4 latest-tech-card hidden">
-            <img src="img/5g.jpg" class="card-img-top" alt="5G">
+            <a href="https://www.qualcomm.com/5g/what-is-5g">
+              <img src="img/5g.jpg" class="card-img-top" alt="5G">
+            </a>
             <div class="card-body">
               <h5 class="card-title">5G</h5>
               <p class="card-text">5G adalah generasi kelima dari teknologi seluler nirkabel, yang menawarkan kecepatan unggah dan unduh yang lebih tinggi, koneksi yang lebih konsisten, dan peningkatan kapasitas dibandingkan jaringan sebelumnya.</p>
@@ -109,7 +127,9 @@
         </div>
         <div class="col-md-6 col-lg-4 mb-4">
           <div class="card rounded-4 latest-tech-card hidden">
-            <img src="img/bg-vr.jpg" class="card-img-top" alt="Virtual Reality (VR)">
+            <a href="https://www.meta.com/quest/">
+              <img src="img/bg-vr.jpg" class="card-img-top" alt="Virtual Reality (VR)">
+            </a>
             <div class="card-body">
               <h5 class="card-title">Virtual Reality</h5>
               <p class="card-text">Pengertian Virtual Reality (VR) adalah sebuah teknologi yang menciptakan pengalaman interaktif dan imersif bagi pengguna di dalam lingkungan simulasi. Dalam dunia virtual yang diciptakan, kamu dapat merasakan dan berinteraksi dengan objek-objek serta lingkungan 3D yang terlihat dan terdengar seperti di dunia nyata.</p>
@@ -118,7 +138,9 @@
         </div>
         <div class="col-md-6 col-lg-4 mb-4">
           <div class="card rounded-4 latest-tech-card hidden">
-            <img src="img/chatgpt.jpg" class="card-img-top" alt="ChatGPT">
+            <a href="https://chatgpt.com/">
+              <img src="img/chatgpt.jpg" class="card-img-top" alt="ChatGPT">
+            </a>
             <div class="card-body">
               <h5 class="card-title">ChatGPT</h5>
               <p class="card-text">ChatGPT adalah model bahasa yang menggunakan kecerdasan buatan (AI) untuk menghasilkan teks yang mirip dengan respons manusia dalam percakapan. ChatGPT dikembangkan oleh OpenAI dan menggunakan teknologi Generative Pre-trained Transformer (GPT).</p>
@@ -127,9 +149,6 @@
         </div>
       </div>
     </div>
-
-    
-  
   </section>
   <!-- Section Recent Tech End -->
 
@@ -139,8 +158,8 @@
       <h2 class="fw-bold text-center">Tren</h2>
       <p class="text-center">Ada beberapa teknologi yang menjadi tren dan ramai digunakan saat ini, seperti:</p>
       <div class="ai-row d-flex align-items-center py-5">
-        <div class="col-lg-6 col-md-6">
-          <h2 class="mb-4 fw-semibol">Kecerdasan Buatan</h2>
+        <div class="col-lg-6 col-md-6 text-center">
+          <h2 class="mb-4 fw-semibold">Kecerdasan Buatan</h2>
           <p class="fs-5">AI saat ini menjadi tren karena kemampuannya untuk meningkatkan efisiensi dan inovasi dalam berbagai bidang. Meskipun memberikan banyak manfaat, tantangan etika dan dampak sosialnya perlu diperhatikan agar penggunaannya tetap bertanggung jawab.</p>
         </div>
         <div class="col-lg-6 col-md-6 ai-image hidden">
@@ -151,7 +170,7 @@
         <div class="col-lg-6 col-md-6 foldable-image hidden">
           <!-- Foldable image here... -->
         </div>
-        <div class="col-lg-6 col-md-6">
+        <div class="col-lg-6 col-md-6 text-center">
           <h2 class="mb-4 fw-semibold">Ponsel Lipat</h2>
           <p class="fs-5">Baru-baru ini, ponsel dalam bentuk yang dapat dilipat sedang menjadi tren, karena bentuk ponsel ini menghadirkan inovasi menarik dengan layar fleksibel yang bisa dilipat. Akan tetapi, harga ponsel lipat cenderung mahal dikarenakan biaya untuk produksi ponsel ini masih sangat mahal.</p>
         </div>
@@ -174,7 +193,9 @@
           <div class="swiper-slide myCard">
             <div class="card-content">
               <div class="image">
-                <img src="img/win95.jpg" alt="Microsoft Windows 95" />
+                <a href="https://id.wikipedia.org/wiki/Windows_95">
+                  <img src="img/win95.jpg" alt="Microsoft Windows 95" title="Microsoft Windows 95"/>
+                </a>
               </div>
             </div>
           </div>
@@ -182,7 +203,9 @@
           <div class="swiper-slide myCard">
             <div class="card-content">
               <div class="image">
-                <img src="img/ie.webp" alt="Microsoft Internet Explorer" />
+                <a href="https://en.wikipedia.org/wiki/Internet_Explorer">
+                  <img src="img/ie.webp" alt="Microsoft Internet Explorer" title="Microsoft Internet Explorer"/>
+                </a>
               </div>
             </div>
           </div>
@@ -190,7 +213,9 @@
           <div class="swiper-slide myCard">
             <div class="card-content">
               <div class="image">
-                <img src="img/ipod.jpg" alt="Apple iPod Touch 7th Generation" />
+                <a href="https://support.apple.com/id-id/103823">
+                  <img src="img/ipod.jpg" alt="Apple iPod Touch 7th Generation" title="Apple iPod Touch 7th Generation"/>
+                </a>
               </div>
             </div>
           </div>
@@ -198,7 +223,9 @@
           <div class="swiper-slide myCard">
             <div class="card-content">
               <div class="image">
-                <img src="img/blackberry.jpg" alt="BlackBerry Phone" />
+                <a href="https://www.amazon.co.uk/BlackBerry-Curve-8520-Free-Smartphone-Black/dp/B002KQLUVU">
+                  <img src="img/blackberry.jpg" alt="BlackBerry Curve 8520" title="BlackBerry Curve 8520"/>
+                </a>
               </div>
             </div>
           </div>
@@ -206,7 +233,9 @@
           <div class="swiper-slide myCard">
             <div class="card-content">
               <div class="image">
-                <img src="img/youtube.webp" alt="YouTube" />
+                <a href="https://youtube.com">
+                  <img src="img/youtube.webp" alt="YouTube" title="YouTube"/>
+                </a>
               </div>
             </div>
           </div>
@@ -214,7 +243,9 @@
           <div class="swiper-slide myCard">
             <div class="card-content">
               <div class="image">
-                <img src="img/iphone.webp" alt="Apple iPhone 2G" />
+                <a href="https://www.gsmarena.com/apple_iphone-1827.php">
+                  <img src="img/iphone.webp" alt="Apple iPhone 2G" title="Apple iPhone 2G"/>
+                </a>
               </div>
             </div>
           </div>
@@ -222,7 +253,9 @@
           <div class="swiper-slide myCard">
             <div class="card-content">
               <div class="image">
-                <img src="img/android.jpg" alt="Android" />
+                <a href="https://www.android.com/">
+                  <img src="img/android.jpg" alt="Android" title="Android"/>
+                </a>
               </div>
             </div>
           </div>
@@ -230,7 +263,9 @@
           <div class="swiper-slide myCard">
             <div class="card-content">
               <div class="image">
-                <img src="img/vr.jpg" alt="Virtual Reality" />
+                <a href="https://www.meta.com/quest/">
+                  <img src="img/vr.jpg" alt="Virtual Reality" title="Virtual Reality"/>
+                </a>
               </div>
             </div>
           </div>
@@ -238,7 +273,9 @@
           <div class="swiper-slide myCard">
             <div class="card-content">
               <div class="image">
-                <img src="img/crypto.png" alt="Cryptocurrency" />
+                <a href="https://id.wikipedia.org/wiki/Mata_uang_kripto">
+                  <img src="img/crypto.png" alt="Cryptocurrency" title="Cryptocurrency"/>
+                </a>
               </div>
             </div>
           </div>
@@ -246,7 +283,9 @@
           <div class="swiper-slide myCard">
             <div class="card-content">
               <div class="image">
-                <img src="img/chatgpt.jpg" alt="Kecerdasan Buatan" />
+                <a href="https://chatgpt.com">
+                  <img src="img/chatgpt.jpg" alt="Kecerdasan Buatan" title="Kecerdasan Buatan"/>
+                </a>
               </div>
             </div>
           </div>
@@ -255,7 +294,7 @@
     </div>
 
     <div class="image-desc mt-5">
-      <h3 class="text-center"><strong id="image-title"></strong></h3>
+      <h4 class="text-center"><strong id="image-title"></strong></h4>
       <p id="image-desc" class="container text-center mt-3"></p>
     </div>
   </section>

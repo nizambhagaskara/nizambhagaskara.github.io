@@ -1,4 +1,3 @@
-// Caching the fetched descriptions data
 const descriptions = [
   {
     "title": "Windows 95 (1995)",
@@ -13,7 +12,7 @@ const descriptions = [
     "desc": "Apple meluncurkan iPod, perangkat pemutar musik digital yang merevolusi cara orang mendengarkan musik. Ini membuka jalan bagi industri musik digital."
   },
   {
-    "title": "BlackBerry (2003)",
+    "title": "BlackBerry Curve 8520 (2003)",
     "desc": "Ponsel pintar pertama yang dirancang untuk penggunaan bisnis dengan kemampuan email dan pengaturan kalender. BlackBerry menjadi simbol produktivitas pada masa itu."
   },
   {
@@ -126,6 +125,33 @@ const swiper = new Swiper(".swiper", {
   slidesPerView: "auto",
 });
 
+let isSwiping = false; // Flag to prevent multiple slide changes
+
+swiper.wrapperEl.addEventListener("wheel", (e) => {
+  // Prevent default scroll behavior
+  e.preventDefault();
+
+  // Adjust the sensitivity threshold
+  const sensitivityThreshold = 30; // Change this value to adjust sensitivity
+
+  // Check if the horizontal scroll delta is significant
+  if (Math.abs(e.deltaX) > Math.abs(e.deltaY) && Math.abs(e.deltaX) > sensitivityThreshold && !isSwiping) {
+    isSwiping = true; // Set the flag to indicate a swipe is in progress
+
+    // Inverted horizontal scroll direction
+    if (e.deltaX > 0) {
+      swiper.slideNext(); // Scroll right (next slide)
+    } else {
+      swiper.slidePrev(); // Scroll left (previous slide)
+    }
+
+    // Wait for the transition to finish before allowing another swipe
+    swiper.once('transitionEnd', () => {
+      isSwiping = false; // Reset the flag after the transition ends
+    });
+  }
+});
+
 updateSliderDescriptionAndScale(swiper.activeIndex);
 
 swiper.on("slideChange", function () {
@@ -151,9 +177,11 @@ window.onscroll = function () {
 
 
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
   const sections = document.querySelectorAll('section'); // Select all sections
   const navLinks = document.querySelectorAll('.nav-link'); // Select all nav links
+  const offcanvasElement = document.getElementById('offcanvasNavbar');
+  const offcanvas = new bootstrap.Offcanvas(offcanvasElement);
 
   const observerOptions = {
     root: null, // Use the viewport as the root
@@ -200,6 +228,12 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', function () {
     handleHomeLink();
   });
+
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      offcanvas.hide();
+    });
+  })
 });
 
 
@@ -229,3 +263,15 @@ const observer = new IntersectionObserver((entries) => {
 
 const hiddenElements = document.querySelectorAll(".hidden");
 hiddenElements.forEach((element) => observer.observe(element));
+
+// Redirect images to a specific site
+const aiImg = document.querySelector(".ai-image"),
+      foldableImg = document.querySelector(".foldable-image");
+
+aiImg.addEventListener("click", () => {
+  window.location.href = "https://chatgpt.com";
+});
+
+foldableImg.addEventListener("click", () => {
+  window.location.href = "https://www.samsung.com/id/smartphones/galaxy-z-fold6/";
+});

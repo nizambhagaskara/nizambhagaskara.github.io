@@ -14,6 +14,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   height: 2000px;
   overflow-x: hidden;
@@ -77,11 +81,14 @@ html[data-bs-theme="dark"] nav.navbar-fixed .hamburger {
   color: #666777;
   font-weight: 500;
   position: relative;
+  display: inline-block; /* Make width relative to the content (text) */
+  position: relative; /* Ensure the ::before element is positioned relative to this */
+  max-width: max-content; /* Optional: Ensures the width is exactly as much as the content */
 }
 
 @media (max-width: 767px) {
   .nav-link {
-    font-size: larger;
+    font-size: 1.125em;
   }
 }
 
@@ -122,7 +129,7 @@ html[data-bs-theme="dark"] nav.navbar-fixed .hamburger {
   visibility: visible;
 }
 
-.nav-link:active,
+.nav-link.active,
 .nav-link:hover {
   color: var(--dark);
 }
@@ -130,6 +137,21 @@ html[data-bs-theme="dark"] nav.navbar-fixed .hamburger {
 html[data-bs-theme="dark"] nav.navbar-fixed .nav-link:active,
 html[data-bs-theme="dark"] nav.navbar-fixed .nav-link:hover {
   color: var(--light);
+}
+
+@media (max-width: 767px) {
+  [data-bs-theme="dark"] .nav-link.active {
+    color: var(--light);
+  }
+
+  [data-bs-theme="dark"] .nav-link::before {
+    background-color: var(--light);
+  }
+
+  .nav-link.active,
+  .nav-link:hover {
+  color: var(--light);
+}
 }
 
 .top-banner {
@@ -272,7 +294,7 @@ h2 {
 }
 
 html[data-bs-theme="dark"] #trend {
-  background: #212121;
+  background: #25282c;
 }
 
 /* For larger screens (default layout) */
@@ -311,21 +333,6 @@ html[data-bs-theme="dark"] #trend {
   }
 }
 
-.foldable-image.show {
-  animation: showFoldableOnViewport 1s ease;
-  background: url("../img/zfold6.png") no-repeat center;
-  background-size: contain;
-  height: 100%;
-  min-height: 300px;
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.foldable-image.hidden {
-  transform: translateX(-100%);
-  opacity: 0;
-}
-
 .ai-image.show {
   animation: showAiIllustrationOnViewport 1s ease;
   background: url("../img/ai-illustration.png") no-repeat center;
@@ -334,12 +341,30 @@ html[data-bs-theme="dark"] #trend {
   min-height: 300px;
   opacity: 1;
   transform: translateX(0);
+  cursor: pointer;
 }
 
 .ai-image.hidden {
   transform: translateX(100%);
   opacity: 0;
 }
+
+.foldable-image.show {
+  animation: showFoldableOnViewport 1s ease;
+  background: url("../img/zfold6.png") no-repeat center;
+  background-size: contain;
+  height: 100%;
+  min-height: 300px;
+  opacity: 1;
+  transform: translateX(0);
+  cursor: pointer;
+}
+
+.foldable-image.hidden {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
 
 /* For smaller screens (mobile layout) */
 @media (max-width: 768px) {
@@ -388,6 +413,7 @@ html[data-bs-theme="dark"] #trend {
   align-items: center;
   justify-content: center;
   transition: transform 0.3s ease;
+  flex-shrink: 0;
 }
 
 .myCard {
