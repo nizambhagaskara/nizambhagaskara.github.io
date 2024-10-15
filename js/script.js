@@ -1,3 +1,126 @@
+// === Sticky Navbar (Navbar Fixed on Scroll) ===
+
+const navbar = document.querySelector("nav");
+const fixedNav = navbar.offsetTop;
+
+if (window.scrollY > fixedNav) {
+  navbar.classList.add('navbar-fixed');
+} else {
+  navbar.classList.remove('navbar-fixed');
+}
+
+window.addEventListener("scroll", function () {
+  if (window.scrollY > fixedNav) {
+    navbar.classList.add('navbar-fixed');
+  } else {
+    navbar.classList.remove('navbar-fixed');
+  }
+});
+
+// === Navbar Toggling for Small Screens ===
+
+// Toggle the navbar branding position based on the screen width
+const mediaQuery = window.matchMedia("(max-width: 991px)");
+
+const handleMediaChange = (e) => {
+  const brandElement = document.querySelector('.navbar-brand');
+  brandElement.classList.toggle("me-auto", e.matches);
+};
+
+mediaQuery.addEventListener('change', handleMediaChange);
+handleMediaChange(mediaQuery);
+
+// === Navbar and Section Link Activation (Relates to "home" section) ===
+
+// Set active class for the currently visible section in the navbar
+function setActiveLink(id) {
+  const navLinks = document.querySelectorAll('.nav-link');
+  navLinks.forEach(link => link.classList.remove('active'));
+
+  const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
+  if (activeLink) activeLink.classList.add('active');
+}
+
+// Handle updating the active navbar link based on scroll position
+const sections = document.querySelectorAll('section');
+const observerOptions = { threshold: 0.5 }; // Trigger when 50% of the section is in view
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const id = entry.target.getAttribute('id');
+    
+    if (entry.isIntersecting) {
+      // Handle special case for 'home'
+      if (id === 'home') {
+        window.history.replaceState(null, null, '#home');
+      } else {
+        window.history.replaceState(null, null, `#${id}`);
+      }
+      setActiveLink(id); // Update active class based on visible section
+    }
+  });
+}, observerOptions);
+
+// Observe all sections including 'home'
+sections.forEach(section => {
+  observer.observe(section);
+});
+
+// Special handling for the home section link (when page is scrolled to the top)
+function handleHomeLink() {
+  if (window.scrollY === 0) {
+    window.history.replaceState(null, null, '#home');
+    setActiveLink('home'); // Mark the home link as active
+  }
+}
+
+// Initial check when the page loads
+handleHomeLink();
+
+// Add event listener to update the active link on scroll
+window.addEventListener('scroll', handleHomeLink);
+
+// Close offcanvas on link click
+const navLinks = document.querySelectorAll('.nav-link');
+const offcanvasElement = document.getElementById('offcanvasNavbar');
+const offcanvas = new bootstrap.Offcanvas(offcanvasElement);
+
+navLinks.forEach(link => link.addEventListener("click", () => offcanvas.hide()));
+
+// === Dark Mode Logic ===
+
+// Retrieve the stored theme preference from localStorage
+const getStoredTheme = () => localStorage.getItem('theme');
+
+// Save the user's theme preference to localStorage
+const setStoredTheme = (theme) => localStorage.setItem('theme', theme);
+
+// Get the preferred theme, either from storage or system setting
+const getPreferredTheme = () => getStoredTheme() || 
+  (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+// Apply the selected theme (auto/dark/light) to the document
+const setTheme = (theme) => {
+  const activeTheme = theme === 'auto' 
+    ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme;
+
+  document.documentElement.setAttribute('data-bs-theme', activeTheme);
+  setStoredTheme(theme);
+};
+
+// Initialize the theme on page load
+setTheme(getPreferredTheme());
+
+// Handle theme toggling via the checkbox
+const darkModeToggle = document.querySelector("#dark-toggle");
+darkModeToggle.checked = getPreferredTheme() === 'dark';
+
+darkModeToggle.addEventListener("change", function () {
+  setTheme(this.checked ? "dark" : "light");
+});
+
+// === Swiper Slider Functionality (Relates to "inventions" section) ===
+
 const descriptions = [
   {
     "title": "Windows 95 (1995)",
@@ -39,46 +162,9 @@ const descriptions = [
     "title": "Kecerdasan Buatan (1956-sekarang)",
     "desc": "Kecerdasan Buatan merujuk pada kemampuan mesin untuk meniru atau meniru kecerdasan manusia. Ini mencakup berbagai teknik dan metode yang memungkinkan komputer untuk memahami, belajar, dan mengambil keputusan berdasarkan data yang diberikan."
   }
-]; 
+];
 
-// Dark Mode check (same as before)
-const getStoredTheme = () => localStorage.getItem('theme');
-const setStoredTheme = theme => localStorage.setItem('theme', theme);
-
-const getPreferredTheme = () => {
-  const storedTheme = getStoredTheme();
-  if (storedTheme) {
-    return storedTheme;
-  }
-
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-};
-
-const setTheme = theme => {
-  if (theme === 'auto') {
-    document.documentElement.setAttribute('data-bs-theme', (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
-  } else {
-    document.documentElement.setAttribute('data-bs-theme', theme);
-    setStoredTheme(theme);
-  }
-};
-
-setTheme(getPreferredTheme());
-
-const darkModeToggle = document.querySelector("#dark-toggle");
-
-if (getPreferredTheme() == "dark") {
-  darkModeToggle.checked = true;
-}
-
-darkModeToggle.addEventListener("change", function () {
-  if (this.checked) {
-    setTheme("dark");
-  } else {
-    setTheme("light");
-  }
-});
-
+// Update the slider to display the correct descriptions and scale the active slide
 const updateSliderDescriptionAndScale = (activeIndex) => {
   const imageTitle = document.querySelector("#image-title");
   const imageDesc = document.querySelector("#image-desc");
@@ -87,6 +173,7 @@ const updateSliderDescriptionAndScale = (activeIndex) => {
   // Reset scaling on all slides
   allSlides.forEach((slide, index) => {
     slide.classList.remove("active-card");
+    
     // Scale down all slides to 1
     slide.style.transform = "scale(1)";
     slide.style.border = "0";
@@ -158,102 +245,12 @@ swiper.on("slideChange", function () {
   updateSliderDescriptionAndScale(swiper.activeIndex);
 });
 
-const navbar = document.querySelector("nav");
-const fixedNav = navbar.offsetTop;
+// === Scroll Reveal Animations (Relates to "latest-tech" and "trend" sections) ===
 
-if (window.scrollY > fixedNav) {
-  navbar.classList.add('navbar-fixed');
-} else {
-  navbar.classList.remove('navbar-fixed');
-}
-
-window.onscroll = function () {
-  if (window.scrollY > fixedNav) {
-    navbar.classList.add('navbar-fixed');
-  } else {
-    navbar.classList.remove('navbar-fixed');
-  }
-};
-
-
-
-document.addEventListener('DOMContentLoaded', function() {
-  const sections = document.querySelectorAll('section'); // Select all sections
-  const navLinks = document.querySelectorAll('.nav-link'); // Select all nav links
-  const offcanvasElement = document.getElementById('offcanvasNavbar');
-  const offcanvas = new bootstrap.Offcanvas(offcanvasElement);
-
-  const observerOptions = {
-    root: null, // Use the viewport as the root
-    threshold: 0.5, // 50% of the section needs to be in view
-  };
-
-  // Function to update active link
-  function setActiveLink(id) {
-    navLinks.forEach(link => link.classList.remove('active')); // Remove active from all links
-    const activeLink = document.querySelector(`.nav-link[href="#${id}"]`); // Target only .nav-link
-    if (activeLink) activeLink.classList.add('active'); // Add active to the current section link
-  }
-
-  // Intersection Observer callback
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const id = entry.target.getAttribute('id');
-      if (entry.isIntersecting && id !== 'home') { // Avoid updating when it's #home
-        window.history.replaceState(null, null, `#${id}`);
-        setActiveLink(id); // Set the active link based on the section in view
-      }
-    });
-  }, observerOptions);
-
-  // Observe each section except #home
-  sections.forEach(section => {
-    if (section.getAttribute('id') !== 'home') {
-      observer.observe(section);
-    }
-  });
-
-  // Special handling for home section (when page is at the top)
-  function handleHomeLink() {
-    if (window.scrollY === 0) {
-      window.history.replaceState(null, null, '#home');
-      setActiveLink('home'); // Set home link as active when at top
-    }
-  }
-
-  // Initial check when the page loads
-  handleHomeLink();
-
-  // Handle scrolling back to top
-  window.addEventListener('scroll', function () {
-    handleHomeLink();
-  });
-
-  navLinks.forEach(link => {
-    link.addEventListener("click", () => {
-      offcanvas.hide();
-    });
-  })
-});
-
-
-const mediaQuery = window.matchMedia("(max-width: 767px)");
-
-function handleMediaChange(e) {
-  const element = document.querySelector('.navbar-brand');
-  if (e.matches) {
-    element.classList.add("me-auto");
-  } else {
-    element.classList.remove("me-auto");
-  }
-}
-
-handleMediaChange(mediaQuery);
-mediaQuery.addEventListener('change', handleMediaChange);
-
-// Show hidden elements on scroll
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
+// Show hidden elements as they scroll into view
+const hiddenElements = document.querySelectorAll(".hidden");
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add("show");
       entry.target.classList.remove("hidden");
@@ -261,17 +258,15 @@ const observer = new IntersectionObserver((entries) => {
   });
 });
 
-const hiddenElements = document.querySelectorAll(".hidden");
-hiddenElements.forEach((element) => observer.observe(element));
+// Apply the reveal effect to all hidden elements
+hiddenElements.forEach(element => revealObserver.observe(element));
 
-// Redirect images to a specific site
-const aiImg = document.querySelector(".ai-image"),
-      foldableImg = document.querySelector(".foldable-image");
+// === Redirect Images to External Sites ===
 
-aiImg.addEventListener("click", () => {
+document.querySelector(".ai-image").addEventListener("click", () => {
   window.location.href = "https://chatgpt.com";
 });
 
-foldableImg.addEventListener("click", () => {
+document.querySelector(".foldable-image").addEventListener("click", () => {
   window.location.href = "https://www.samsung.com/id/smartphones/galaxy-z-fold6/";
 });

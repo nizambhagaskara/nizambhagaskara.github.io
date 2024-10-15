@@ -19,8 +19,8 @@ html {
 }
 
 body {
-  height: 2000px;
   overflow-x: hidden;
+  transition: all 0.3s ease-in-out;
 }
 
 .navbar {
@@ -31,17 +31,17 @@ body {
 
 .navbar-fixed {
   background-color: var(--light);
-  border-radius: 16px;
+  border-radius: 1.75rem;
   padding: 0.5rem;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.25);
 }
 
 html[data-bs-theme="dark"] .navbar-fixed {
-  background-color: var(--dark);
+  background-color: rgba(43, 47, 51, 1);
 }
 
 .navbar-toggler {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .navbar-toggler,
@@ -86,9 +86,19 @@ html[data-bs-theme="dark"] nav.navbar-fixed .hamburger {
   max-width: max-content; /* Optional: Ensures the width is exactly as much as the content */
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .nav-link {
-    font-size: 1.125em;
+    font-size: 1.1rem;
+  }
+
+  .offcanvas-header {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .offcanvas-logo {
+    width: 4rem;
+    height: 4rem;
   }
 }
 
@@ -139,7 +149,7 @@ html[data-bs-theme="dark"] nav.navbar-fixed .nav-link:hover {
   color: var(--light);
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   [data-bs-theme="dark"] .nav-link.active {
     color: var(--light);
   }
@@ -162,22 +172,42 @@ html[data-bs-theme="dark"] nav.navbar-fixed .nav-link:hover {
   position: relative;
 }
 
-.top-banner::after {
+.top-banner::after, .top-banner::before {
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   height: 200px;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white);
+  transition: opacity 0.3s ease-in-out; /* Transition effect */
+  z-index: 1; /* Ensure it's on top */
+  pointer-events: none;
+  transition-delay: 0;
 }
 
+/* Light mode gradient */
+.top-banner::after {
+  transition-delay: 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white);
+  opacity: 1; /* Initially visible */
+}
+
+/* Dark mode gradient */
+.top-banner::before {
+  transition-delay: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #212529);
+  opacity: 0; /* Initially hidden */
+}
+
+/* Switch to dark mode */
 html[data-bs-theme="dark"] .top-banner::after {
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0),
-    #212529
-  );
+  transition-delay: 0;
+  opacity: 0; /* Fade out light mode */
+}
+
+html[data-bs-theme="dark"] .top-banner::before {
+  transition-delay: 0;
+  opacity: 1; /* Fade in dark mode */
 }
 
 .texts {
@@ -291,6 +321,7 @@ h2 {
 #trend {
   background: #f2f2f2;
   padding: 4rem 0;
+  transition: all 0.3s ease-in-out;
 }
 
 html[data-bs-theme="dark"] #trend {
@@ -342,6 +373,7 @@ html[data-bs-theme="dark"] #trend {
   opacity: 1;
   transform: translateX(0);
   cursor: pointer;
+  transition: scale 0.1s ease-in-out;
 }
 
 .ai-image.hidden {
@@ -358,6 +390,7 @@ html[data-bs-theme="dark"] #trend {
   opacity: 1;
   transform: translateX(0);
   cursor: pointer;
+  transition: scale 0.2s ease-in-out;
 }
 
 .foldable-image.hidden {
@@ -365,12 +398,24 @@ html[data-bs-theme="dark"] #trend {
   opacity: 0;
 }
 
+.ai-image.show:hover,
+.foldable-image.show:hover {
+  scale: 110%;
+}
+
+.foldable-row {
+  padding-top: 8rem;
+}
 
 /* For smaller screens (mobile layout) */
 @media (max-width: 768px) {
   .ai-row {
     flex-direction: column-reverse; /* Change the order: image first, text second */
     text-align: center;             /* Center-align the text */
+  }
+
+  .foldable-row {
+    padding-top: 0;
   }
 
   .col-lg-6 {
@@ -389,7 +434,7 @@ html[data-bs-theme="dark"] #trend {
 }
 
 #inventions {
-  padding: 4rem 0;
+  padding: 6rem 0;
 }
 
 .slider-container {
@@ -431,7 +476,7 @@ html[data-bs-theme="dark"] #trend {
   z-index: 50;
 }
 
-.image {
+.myCard .card-content .image {
   position: absolute;
   top: 0;
   left: 0;
@@ -442,9 +487,38 @@ html[data-bs-theme="dark"] #trend {
   overflow: hidden;
 }
 
-.image img {
+.myCard .card-content .image img {
   height: 100%;
   width: 100%;
   object-fit: cover;
   border-radius: 20px;
+}
+
+footer {
+  padding: 4rem 3rem;
+  width: 100vw;
+  background-color: #0c73bd;
+  color: var(--light);
+  transition: all 0.3s ease-in-out;
+}
+
+html[data-bs-theme="dark"] footer {
+  background-color: #292c30;
+
+}
+
+.footer-cols:nth-child(1) address {
+  margin-bottom: 0;
+  margin: 8px 0;
+  color: var(--light);
+  font-weight: 500;
+}
+
+.footer-cols:nth-child(1) address a {
+  color: var(--light);
+}
+
+.footer-cols ul li a {
+  text-decoration: none;
+  color: var(--light);
 }
