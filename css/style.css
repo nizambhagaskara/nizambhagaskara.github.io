@@ -1,5 +1,4 @@
 :root {
-  --primary: #202567;
   --dark: #212529;
   --light: #f5f5f5;
 }
@@ -214,6 +213,12 @@ html[data-bs-theme="dark"] .top-banner::before {
   color: var(--dark);
   padding: 15px;
   transition: all 0.3s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+html[data-bs-theme="dark"] .texts {
+  background-color: var(--dark);
+  color: var(--light);
 }
 
 h1 {
@@ -282,6 +287,12 @@ html[data-bs-theme="light"] #dark-toggle:checked ~ label div.toggle-circle {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+#latest-tech .items {
+  flex: 1 1 400px;
+  max-width: 100%;
+  flex-grow: 0;
 }
 
 h2 {
@@ -373,7 +384,7 @@ html[data-bs-theme="dark"] #trend {
   opacity: 1;
   transform: translateX(0);
   cursor: pointer;
-  transition: scale 0.1s ease-in-out;
+  transition: scale 0.3s ease-in-out;
 }
 
 .ai-image.hidden {
@@ -390,7 +401,7 @@ html[data-bs-theme="dark"] #trend {
   opacity: 1;
   transform: translateX(0);
   cursor: pointer;
-  transition: scale 0.2s ease-in-out;
+  transition: scale 0.3s ease-in-out;
 }
 
 .foldable-image.hidden {
@@ -401,6 +412,47 @@ html[data-bs-theme="dark"] #trend {
 .ai-image.show:hover,
 .foldable-image.show:hover {
   scale: 110%;
+}
+
+#aboutme {
+  padding: 4rem 0;
+  background: #f2f2f2;
+  transition: all 0.3s ease-in-out;
+}
+
+html[data-bs-theme="dark"] #aboutme {
+  background: #25282c;
+}
+
+.profile-image {
+  overflow: hidden;
+}
+
+.profile-img {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  min-height: 500px;
+  cursor: pointer;
+}
+
+@media (max-width: 992px) {
+  .profile-image svg {
+    transform: translateY(6rem);
+  }
+}
+
+.profile-info {
+  transform: translateY(-1rem);
+  background: white;
+}
+
+html[data-bs-theme="dark"] .profile-info {
+  background-color: rgb(60, 60, 60);
+  color: var(--light);
 }
 
 .foldable-row {
@@ -422,14 +474,16 @@ html[data-bs-theme="dark"] #trend {
     width: 100%; /* Make each column take the full width */
   }
 
-  .ai-image {
+  .ai-image,
+  .foldable-image {
     height: 300px;
     margin-bottom: 2rem;
   }
 
-  .foldable-image {
-    height: 300px;
-    margin-bottom: 2rem;
+  .profile-img {
+    height: 500px;
+    width: 500px;
+    margin: 4rem auto 0 auto;
   }
 }
 
@@ -494,17 +548,196 @@ html[data-bs-theme="dark"] #trend {
   border-radius: 20px;
 }
 
+.social-media {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.link-btn a {
+  max-width: 40px; /* Initial max-width to show only the icon */
+  height: 40px;
+  border: 2px solid #666777;
+  border-radius: 50px;
+  padding: 0.65rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow: hidden; /* Hides the text initially */
+  transition: max-width 0.3s ease, opacity 0.3s ease; /* Smooth transition for max-width */
+  transform: scale(1.1);
+  cursor: pointer;
+  color: var(--dark);
+  text-decoration: none;
+}
+
+html[data-bs-theme="dark"] .link-btn a {
+  color: var(--light);
+}
+
+.link-btn a span {
+  opacity: 0; /* Hides the text initially */
+  transition: opacity 0.3s ease; /* Smooth transition for opacity */
+  white-space: nowrap; /* Prevents text from breaking into a new line */
+}
+
+.link-btn:hover a {
+  max-width: 7.5rem; /* Expands to fit icon and text */
+  color: var(--light);
+  animation: gradient-animation 2s ease-in-out forwards; /* Gradient animation on hover */
+}
+
+.link-btn:hover a span {
+  opacity: 1; /* Reveals the text */
+}
+
+/* Gradient appears only on hover */
+.link-btn:nth-child(1):hover a {
+  background: linear-gradient(45deg, #fd1d1d, #833ab4, #fd1d1d); /* Gradient background on hover */
+  background-size: 300% 300%; /* Allows for animation */
+}
+
+.link-btn:nth-child(2):hover a {
+  background: linear-gradient(45deg, #2ff00d, #26a315, #2ff00d); /* Gradient background on hover */
+  background-size: 300% 300%; /* Allows for animation */
+}
+
+.link-btn:nth-child(3):hover a {
+  background: linear-gradient(45deg, #c5221f, #fbbc04, #34a853); /* Gradient background on hover */
+  background-size: 300% 300%; /* Allows for animation */
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.contact {
+  padding-top: 1rem;
+  padding-bottom: 6rem;
+  transition: all 0.3s ease-in-out;
+}
+
+html[data-bs-theme="dark"] .contact {
+  color: var(--light);
+}
+
+.contact form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.inputForm {
+  position: relative;
+  width: 100%;
+  max-width: 48rem;
+}
+
+.inputForm .inputBox {
+  width: 100%;
+  padding: 15px;
+  border: 1.5px solid rgb(139, 138, 138);
+  background: #f2f2f2;
+  border-radius: 18px;
+  outline: none;
+  color: var(--dark);
+  font-size: 1em;
+  transition-duration: 0.5s;
+}
+
+.inputForm textarea {
+  resize: none;
+  min-height: 150px;
+  overflow: auto;
+}
+
+html[data-bs-theme="dark"] .inputForm .inputBox {
+  background-color: #292c30;
+}
+
+.inputForm span {
+  position: absolute;
+  left: 0;
+  padding: 15px;
+  pointer-events: none;
+  font-size: 1em;
+  color: rgb(160, 160, 160);
+  text-transform: capitalize;
+  transition-duration: 0.5s;
+}
+
+.inputForm .inputBox:valid,
+.inputForm .inputBox:focus,
+.inputForm .inputBox.has-value {
+  border: 1.75px solid var(--dark);
+}
+
+html[data-bs-theme="dark"] .inputForm .inputBox:valid,
+html[data-bs-theme="dark"] .inputForm .inputBox:focus,
+html[data-bs-theme="dark"] .inputForm .inputBox.has-value {
+  border: 1.75px solid var(--light);
+  color: var(--light);
+}
+
+.inputForm .inputBox:valid ~ span,
+.inputForm .inputBox:focus ~ span,
+.inputForm .inputBox.has-value ~ span {
+  color: var(--dark);
+  transform: translateX(10px) translateY(-10px);
+  font-size: 0.85em;
+  padding: 0 10px;
+  background-color: #f2f2f2;
+  border: 1.75px solid var(--dark);
+  border-radius: 10px;
+  transition: all 0.4s ease-in-out;
+}
+
+.contact form button {
+  padding: 0.5rem 1rem;
+  outline: none;
+  border: 1.5px solid #666777;
+  background-color: transparent;
+  color: var(--dark);
+  border-radius: 1.5rem;
+  transition: all 0.4s ease-in-out;
+}
+
+.contact form button:hover {
+  background-color: var(--dark);
+  color: var(--light);
+}
+
+html[data-bs-theme="dark"] .contact form button {
+  border: 1.5px solid var(--light);
+  color: var(--light);
+}
+
+html[data-bs-theme="dark"] .contact form button:hover {
+  background-color: var(--light);
+  color: var(--dark);
+}
+
 footer {
-  padding: 4rem 3rem;
   width: 100vw;
   background-color: #0c73bd;
   color: var(--light);
   transition: all 0.3s ease-in-out;
 }
 
+footer .container {
+  padding: 4rem 3rem;
+}
+
 html[data-bs-theme="dark"] footer {
   background-color: #292c30;
-
 }
 
 .footer-cols:nth-child(1) address {
@@ -521,4 +754,81 @@ html[data-bs-theme="dark"] footer {
 .footer-cols ul li a {
   text-decoration: none;
   color: var(--light);
+}
+
+.miscellaneous {
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+@keyframes showAlert {
+  from {
+    transform: translateY(12rem);
+  }
+  to {
+    transform: translateY(-2rem);
+  }
+}
+
+@keyframes hideAlert {
+  from {
+    transform: translateY(-2rem);
+  }
+  to {
+    transform: translateY(12rem);
+  }
+}
+
+.miscellaneous .alert-box {
+  width: 100%;
+  height: 100%;
+  max-width: 24rem;
+  border-radius: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  transform: translateY(12rem);
+}
+
+.miscellaneous .alert-box.show {
+  animation: showAlert 0.5s forwards;
+}
+
+.miscellaneous .alert-box.hide {
+  animation: hideAlert 0.5s forwards;
+}
+
+.miscellaneous a {
+  width: 3.5rem;
+  height: 3.5rem;
+  border: none;
+  outline: none;
+  background-color: var(--dark);
+  border-radius: 9999px;
+  align-self: flex-end;
+  opacity: 0;
+  transition: all 0.4s ease-in-out;
+}
+
+.miscellaneous a.show {
+  opacity: 1;
+}
+
+html[data-bs-theme="dark"] .miscellaneous a {
+  background-color: var(--light);
+}
+
+.miscellaneous a button {
+  background: transparent;
+  border: 0;
+  outline: 0;
+  color: var(--light);
+}
+
+html[data-bs-theme="dark"] .miscellaneous a button {
+  color: var(--dark);
+}
+
+.miscellaneous a button i::before {
+  transform: scale(1.5);
 }

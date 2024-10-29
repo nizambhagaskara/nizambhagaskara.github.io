@@ -1,3 +1,7 @@
+// === Initialize Alert Box ===
+const alertBox = document.querySelector(".alert-box");
+let alertBoxValue = document.querySelector(".alert-box-value");
+
 // === Sticky Navbar (Navbar Fixed on Scroll) ===
 
 const navbar = document.querySelector("nav");
@@ -45,6 +49,8 @@ function setActiveLink(id) {
 const sections = document.querySelectorAll('section');
 const observerOptions = { threshold: 0.5 }; // Trigger when 50% of the section is in view
 
+const goToTopBtn = document.querySelector(".go-to-top");
+
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     const id = entry.target.getAttribute('id');
@@ -53,8 +59,10 @@ const observer = new IntersectionObserver((entries) => {
       // Handle special case for 'home'
       if (id === 'home') {
         window.history.replaceState(null, null, '#home');
+        goToTopBtn.classList.remove("show");
       } else {
         window.history.replaceState(null, null, `#${id}`);
+        goToTopBtn.classList.add("show");
       }
       setActiveLink(id); // Update active class based on visible section
     }
@@ -124,43 +132,43 @@ darkModeToggle.addEventListener("change", function () {
 const descriptions = [
   {
     "title": "Windows 95 (1995)",
-    "desc": "Microsoft meluncurkan Windows 95 dengan antarmuka pengguna grafis (GUI) yang memudahkan pengguna untuk mengoperasikan komputer. Fitur baru seperti Start Menu dan taskbar menjadi standar dalam sistem operasi modern."
+    "desc": "Microsoft meluncurkan Windows 95 dengan antarmuka pengguna grafis (GUI) yang revolusioner, membuat pengoperasian komputer lebih mudah bagi pengguna umum. Fitur-fitur baru seperti Start Menu dan taskbar memperkenalkan standar baru dalam navigasi antarmuka, memungkinkan pengguna untuk mengakses aplikasi dan pengaturan dengan cepat. Peluncuran Windows 95 merupakan tonggak besar dalam sejarah komputasi, mendorong peningkatan produktivitas dan popularitas komputer di rumah dan kantor."
   },
   {
     "title": "Internet Explorer (1995)",
-    "desc": "Browser web yang dikembangkan oleh Microsoft ini membantu memperkenalkan internet kepada pengguna umum dan memainkan peran penting dalam popularisasi web."
+    "desc": "Internet Explorer, browser web yang dikembangkan oleh Microsoft, menjadi salah satu alat utama yang memperkenalkan internet kepada publik luas. Dengan Internet Explorer, pengguna dapat mengakses berbagai situs web dengan lebih mudah, menjadikannya alat penting dalam penyebaran dan popularitas web. Internet Explorer juga berperan dalam 'perang browser' dan mendorong perkembangan teknologi web selama beberapa dekade, membentuk standar internet yang kita kenal hari ini."
   },
   {
     "title": "iPod (2001)",
-    "desc": "Apple meluncurkan iPod, perangkat pemutar musik digital yang merevolusi cara orang mendengarkan musik. Ini membuka jalan bagi industri musik digital."
+    "desc": "Pada tahun 2001, Apple meluncurkan iPod, perangkat pemutar musik digital yang sangat inovatif, yang memungkinkan pengguna membawa ribuan lagu dalam genggaman mereka. Dengan desain yang simpel dan elegan serta integrasi dengan iTunes, iPod merevolusi cara orang menikmati musik, menghilangkan ketergantungan pada CD dan kaset. iPod juga membuka jalan bagi kebangkitan industri musik digital dan menciptakan dasar bagi produk-produk ikonik Apple lainnya seperti iPhone."
   },
   {
     "title": "BlackBerry Curve 8520 (2003)",
-    "desc": "Ponsel pintar pertama yang dirancang untuk penggunaan bisnis dengan kemampuan email dan pengaturan kalender. BlackBerry menjadi simbol produktivitas pada masa itu."
+    "desc": "BlackBerry Curve 8520, salah satu ponsel pintar pertama yang dirancang untuk keperluan bisnis, menawarkan fitur pengelolaan email, jadwal, dan kontak yang sangat membantu profesional dalam menjaga produktivitas mereka. Dengan keyboard fisik yang nyaman dan koneksi data, BlackBerry menjadi simbol efisiensi dan kinerja bisnis pada masa itu. Ponsel ini juga membangun reputasi BlackBerry sebagai pilihan utama bagi pengguna bisnis sebelum munculnya ponsel pintar berbasis layar sentuh."
   },
   {
     "title": "YouTube (2005)",
-    "desc": "Platform berbagi video yang memungkinkan pengguna mengunggah, menonton, dan berbagi video, mengubah cara konsumsi media dan memberi platform bagi konten kreator."
+    "desc": "YouTube diluncurkan pada tahun 2005 sebagai platform berbagi video yang memungkinkan siapa saja mengunggah, menonton, dan berbagi video secara gratis. Dengan cepat, YouTube mengubah cara orang mengonsumsi media, menjadi alternatif bagi televisi tradisional dan platform penting bagi para kreator konten. YouTube memungkinkan orang-orang dari berbagai latar belakang untuk membuat konten dan membangun audiens global, yang akhirnya membuka peluang ekonomi baru melalui iklan dan monetisasi konten."
   },
   {
     "title": "iPhone (2007)",
-    "desc": "Apple meluncurkan iPhone, menggabungkan ponsel, pemutar musik, dan internet dalam satu perangkat. Ini mendefinisikan kembali smartphone dan menciptakan pasar baru untuk aplikasi mobile."
+    "desc": "Pada tahun 2007, Apple merilis iPhone, perangkat yang menggabungkan ponsel, pemutar musik, dan internet dalam satu paket dengan layar sentuh yang inovatif. iPhone mendefinisikan ulang apa yang dimaksud dengan smartphone dan memperkenalkan App Store, yang menciptakan pasar baru bagi aplikasi mobile. Dengan iPhone, Apple menciptakan ekosistem perangkat dan aplikasi yang memungkinkan berbagai inovasi dan mengubah cara orang berinteraksi dengan teknologi dalam kehidupan sehari-hari."
   },
   {
     "title": "Android (2008)",
-    "desc": "Sistem operasi open-source yang dikembangkan oleh Google, Android menjadi platform utama untuk smartphone di seluruh dunia dan mendemokratisasi akses ke teknologi mobile."
+    "desc": "Android, sistem operasi open-source yang dikembangkan oleh Google, diluncurkan pada tahun 2008 sebagai alternatif untuk iOS Apple. Android menawarkan fleksibilitas yang memungkinkan berbagai produsen perangkat untuk mengadopsi dan menyesuaikan sistem operasi ini. Dengan Android, smartphone menjadi lebih terjangkau dan dapat diakses oleh berbagai lapisan masyarakat, sehingga mendemokratisasi teknologi mobile di seluruh dunia. Ekosistem Android kini mencakup jutaan aplikasi dan miliaran pengguna global."
   },
   {
     "title": "Virtual Reality (VR) dan Augmented Reality (AR) (2010-an)",
-    "desc": "Perkembangan teknologi VR dan AR, seperti Oculus Rift dan Microsoft HoloLens, mengubah cara kita berinteraksi dengan dunia digital dan fisik."
+    "desc": "VR dan AR adalah teknologi yang mengubah cara kita berinteraksi dengan dunia digital. Virtual Reality, seperti Oculus Rift, menciptakan pengalaman digital yang imersif dengan lingkungan buatan yang bisa dilihat dan diinteraksi secara penuh. Sementara itu, Augmented Reality, seperti yang ditawarkan oleh Microsoft HoloLens, menambahkan elemen digital ke dunia nyata, memungkinkan aplikasi dalam berbagai bidang seperti pendidikan, pelatihan, dan hiburan. Teknologi VR dan AR kini diterapkan dalam industri game, desain, dan bahkan kedokteran."
   },
   {
     "title": "Blockchain dan Cryptocurrency (2009-sekarang)",
-    "desc": "Penemuan teknologi blockchain, dengan Bitcoin sebagai contoh pertama, memperkenalkan konsep desentralisasi dan keamanan dalam transaksi digital."
+    "desc": "Blockchain, teknologi di balik cryptocurrency seperti Bitcoin, memperkenalkan konsep buku besar terdistribusi yang aman dan transparan untuk mencatat transaksi digital. Dengan adanya blockchain, transaksi dapat dilakukan tanpa perantara seperti bank, memberikan alternatif yang aman dan efisien dalam berbagai industri. Teknologi ini juga memungkinkan pengembangan aplikasi desentralisasi (dApps) dan inovasi lain di sektor keuangan, logistik, dan keamanan data."
   },
   {
     "title": "Kecerdasan Buatan (1956-sekarang)",
-    "desc": "Kecerdasan Buatan merujuk pada kemampuan mesin untuk meniru atau meniru kecerdasan manusia. Ini mencakup berbagai teknik dan metode yang memungkinkan komputer untuk memahami, belajar, dan mengambil keputusan berdasarkan data yang diberikan."
+    "desc": "Kecerdasan Buatan (AI) adalah bidang yang berkembang sejak 1956, merujuk pada kemampuan mesin untuk belajar, memahami, dan mengambil keputusan yang menyerupai kecerdasan manusia. AI mencakup berbagai pendekatan seperti pembelajaran mesin dan pembelajaran mendalam, yang memungkinkan komputer untuk memproses data dalam jumlah besar dan mendeteksi pola yang kompleks. AI kini digunakan di berbagai bidang, mulai dari rekomendasi produk di platform online hingga diagnosa medis dan otomatisasi industri."
   }
 ];
 
@@ -269,4 +277,59 @@ document.querySelector(".ai-image").addEventListener("click", () => {
 
 document.querySelector(".foldable-image").addEventListener("click", () => {
   window.location.href = "https://www.samsung.com/id/smartphones/galaxy-z-fold6/";
+});
+
+// === Prevent placeholders showing on inputs when it has value ===
+
+const formInputs = document.querySelectorAll(".inputBox");
+formInputs.forEach(input => {
+  input.addEventListener("input", () => {
+    if(input.value !== "") {
+      input.classList.add("has-value");
+    } else {
+      input.classList.remove("has-value");
+    }
+  });
+});
+
+// === Contact Section Mechanism ===
+document.addEventListener("DOMContentLoaded", function() {
+  // Initialize EmailJS
+  emailjs.init({
+    publicKey: "DGDH0E9RjYln9Km3s"
+  });
+
+  // Form submit event listener
+  const contactForm = document.querySelector(".contact-form");
+
+  // Listen for submit
+  contactForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    let from_name = document.querySelector("[name='from_name']").value
+        from_email = document.querySelector("[name='from_email']").value
+        title = document.querySelector("[name='title']").value
+        message = document.querySelector("[name='message']").value;
+
+    emailjs.sendForm('nizam_service', 'contact_form', this, {
+      from_name,
+      from_email,
+      title,
+      message
+    })
+      .then(() => {
+        alertBoxValue.innerHTML = '<i class="bi bi-check-circle-fill me-2"></i> Pesan berhasil dikirim! Silakan tunggu maksimal 24 jam untuk balasan berikutnya.';
+        alertBox.style.backgroundColor = "rgb(0, 128, 0)";
+        alertBox.classList.add("show");
+      }, (error) => {
+        alertBoxValue.innerHTML = `<i class="bi bi-x-circle-fill me-2"></i> ${error.text}`;
+        console.log(error);
+        alertBox.style.backgroundColor = "rgb(212, 2, 2)";
+        alertBox.classList.add("show");
+      });
+    setTimeout(() => {
+      alertBox.classList.add("hide");
+    }, 5000);
+    alertBox.classList.remove("show");
+    alertBox.classList.remove("hide");
+  });
 });
