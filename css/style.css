@@ -329,6 +329,38 @@ h2 {
   transform: scale(0.95);
 }
 
+.see-more-btn {
+  display: inline-flex;
+  background-color: black;
+  color: var(--light);
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+  padding: 0.75rem;
+  margin: 1.5rem 0 0;
+}
+
+html[data-bs-theme="dark"] .see-more-btn {
+  background-color: var(--light);
+  color: var(--dark);
+}
+
+.btn-arrow {
+  width: 0.75rem; 
+  height: 0.75rem; 
+  border-top: 3px solid var(--light); 
+  border-right: 3px solid var(--light); 
+  transform: rotate(45deg); 
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
+  color: var(--light);
+}
+
+html[data-bs-theme="dark"] .btn-arrow {
+  color: var(--dark);
+  border-top: 3px solid var(--dark); 
+  border-right: 3px solid var(--dark);
+}
+
 #trend {
   background: #f2f2f2;
   padding: 4rem 0;
