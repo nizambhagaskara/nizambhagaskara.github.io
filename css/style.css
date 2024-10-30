@@ -471,12 +471,6 @@ html[data-bs-theme="dark"] #aboutme {
   cursor: pointer;
 }
 
-@media (max-width: 992px) {
-  .profile-image svg {
-    transform: translateY(6rem);
-  }
-}
-
 .profile-info {
   transform: translateY(-1rem);
   background: white;
@@ -520,7 +514,7 @@ html[data-bs-theme="dark"] .profile-info {
 }
 
 #inventions {
-  padding: 6rem 0;
+  padding: 4rem 0;
 }
 
 .slider-container {

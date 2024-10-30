@@ -272,7 +272,7 @@ hiddenElements.forEach(element => revealObserver.observe(element));
 // === Redirect Images to External Sites ===
 
 document.querySelector(".ai-image").addEventListener("click", () => {
-  window.location.href = "https://chatgpt.com";
+  window.location.href = "https://aws.amazon.com/id/what-is/artificial-intelligence/";
 });
 
 document.querySelector(".foldable-image").addEventListener("click", () => {
